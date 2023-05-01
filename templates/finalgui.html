@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Accident Severity Prediction </title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/favicon1.ico" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <style>
+  	body {background-image: url('../static/img/world.jpg');    background-repeat: no-repeat; background-attachment: fixed; background-size:cover;background-color: blanchedalmond;}
+  </style>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body text="black">
+	<div class="rows" style="background-color: brown;margin-top: -20px;margin-left: -20px;margin-right: -20px;">
+		<h1 style="text-align: center;color: antiquewhite;">ACCIDENT SEVERITY PREDICTION  </h1>
+	</div>
+	<div class="login" style="text-align: center;">
+		<!--Get input for predict accident-->
+			<form action="{{ url_for('predict')}}"method="post">
+				<h2>ENTER FIELDS</h2>
+				<input type="text" name="Number_of_vehicles_involved" placeholder="Number_of_vehicles_involved" required="required" size="50"/><br>
+				<input type="text" name="Number_of_casualties" placeholder="Number_of_casualties" required="required" size="50"/><br>
+				<label for="Day_of_week">Day of week</label><select name="Day_of_week" id="Day_of_week">
+					<option value=0>Monday</option>
+					<option value=1>Tuesday</option>
+					<option value=2>Wednesday</option>
+					<option value=3>Thursday</option>
+					<option value=4>Friday</option>
+					<option value=5>Saturday</option>
+					<option value=6>Sunday</option>
+				</select><br>
+				<label for="Age_band_of_driver">Age group of driver</label><select name="Age_band_of_driver" id="Age_band_of_driver">
+					<option value=0>18-30</option>
+					<option value=1>31-50</option>
+					<option value=2>Over 51</option>
+					<option value=3>Under 18</option>
+					<option value=4>Unknown</option>
+				</select><br>
+				<label for="Area_accident_occured">Area where accident occured</label><select name="Area_accident_occured" id="Area_accident_occured">
+					<option value=0>  Market areas</option>
+					<option value=1>  Recreational areas</option>
+					<option value=2> Church areas</option>
+					<option value=3> Hospital areas</option>
+					<option value=4> Industrial areas</option>
+					<option value=5> Outside rural areas</option>
+					<option value=6>Office areas</option>
+					<option value=7>Other</option>
+					<option value=8>Recreational areas</option>
+					<option value=9>Residential areas</option>
+					<option value=10>Rural village areas</option>
+					<option value=11>Rural village areasOffice areas</option>
+					<option value=12>School areas</option>
+					<option value=13>Unknown</option>
+				</select><br>
+				<label for="Types_of_Junction">Type of Junction</label><select name="Types_of_Junction" id="Types_of_Junction">
+					<option value=0>Crossing</option>
+					<option value=1>No junction</option>
+					<option value=2>O Shape</option>
+					<option value=3>Other</option>
+					<option value=4>T Shape</option>
+					<option value=5>Unknown</option>
+					<option value=6>X Shape</option>
+					<option value=7>Y Shape</option>
+				</select><br>
+				<label for="Light_conditions">Area where accident occured</label><select name="Light conditions" id="Light_conditions">
+					<option value=0>Darkness - lights lit</option>
+					<option value=1>Darkness - lights unlit</option>
+					<option value=2>Darkness - no lighting</option>
+					<option value=3>Daylight</option>
+				</select><br>
+				<label for="Weather_conditions">Weather Conditions</label><select name="Weather_conditions" id="Weather_conditions">
+					<option value=0>Cloudy</option>
+					<option value=1>Fog or mist</option>
+					<option value=2>Normal</option>
+					<option value=3>Other</option>
+					<option value=4>Raining</option>
+					<option value=5>Raining and Windy</option>
+					<option value=6>Snow</option>
+					<option value=7>Unknown</option>
+					<option value=8>'Windy'</option>
+				</select><br>
+				<input type="text" name="Time_hour" placeholder="Hour of accident(24 hours format)" required="required" size="50" /><br>
+				<br><br>
+				<!-- show button-->
+				<div class="button_cont"><a class="button_css">
+					<button text="blue" type="submit" class="btn btn-primary btn-block btn-large"><strong><h4>CLICK HERE TO PREDICT </h4></strong>
+						<h4 style="color:Tomato;">Fatal injury(0)</h4>
+                        <h4 style="color:olive;">Serious Injury(1)</h4>
+						<h4 style="color:DodgerBlue;">Slight Injury(2)</h4>
+					</button></a>
+				</div>
+			</form>
+		 <!--Show predicted output using ML model-->
+		<br>
+		<br>
+		<div>
+		
+				<h1>{{ prediction }}</h1>	
+		</ul>
+	</div >
+
+	</body>
+	</html>
